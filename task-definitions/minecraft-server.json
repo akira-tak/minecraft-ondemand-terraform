@@ -1,0 +1,82 @@
+[
+    {
+        "name": "minecraft-server",
+        "image": "itzg/minecraft-bedrock-server",
+        "essential": false,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-region": "ap-northeast-1",
+            "awslogs-stream-prefix": "server",
+            "awslogs-group": "/ecs/minecraft_server"
+          }
+        },
+
+        "environment" : [
+            {
+                "name": "EULA",
+                "value": "TRUE"
+            },
+            {
+                "name": "GAMEMODE",
+                "value": "survival"
+            },
+            {
+                "name": "DIFFICULTY",
+                "value": "normal"
+            }
+        ],
+        "mountPoints": [
+            {
+                "sourceVolume": "data",
+                "containerPath": "/data"
+            }
+        ],
+        "portMappings" : [{
+            "ContainerPort" : 19132,
+            "HostPort" : 19132,
+            "Protocol" : "UDP"
+          }
+        ]
+    },
+    {
+        "name": "watchdog",
+        "image": "doctorray/minecraft-ecsfargate-watchdog",
+        "essential": true,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-region": "ap-northeast-1",
+            "awslogs-stream-prefix": "watchdog",
+            "awslogs-group": "/ecs/minecraft_server"
+          }
+        },
+
+        "environment" : [
+            {
+                "name": "CLUSTER",
+                "value": "${cluster_name}"
+            },
+            {
+                "name": "SERVICE",
+                "value": "${service_name}"
+            },
+            {
+                "name": "DNSZONE",
+                "value": "${dns_zone}"
+            },
+            {
+                "name": "SERVERNAME",
+                "value": "${server_name}"
+            },
+            {
+                "name": "SHUTDOWNMIN",
+                "value": "${shutdown_min}"
+            },
+            {
+                "name": "SNSTOPIC",
+                "value": "${sns_topic}"
+            }
+        ]
+    }
+]
