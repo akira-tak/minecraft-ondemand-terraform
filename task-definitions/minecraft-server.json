@@ -23,7 +23,7 @@
             },
             {
                 "name": "DIFFICULTY",
-                "value": "normal"
+                "value": "hard"
             }
         ],
         "mountPoints": [
