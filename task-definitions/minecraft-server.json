@@ -19,13 +19,14 @@
             },
             {
                 "name": "GAMEMODE",
-                "value": "survival"
+                "value": "${gamemode}"
             },
             {
                 "name": "DIFFICULTY",
-                "value": "hard"
+                "value": "${difficulty}"
             }
         ],
+        "readonlyRootFilesystem": true,
         "mountPoints": [
             {
                 "sourceVolume": "data",
@@ -77,6 +78,7 @@
                 "name": "SNSTOPIC",
                 "value": "${sns_topic}"
             }
-        ]
+        ],
+        "readonlyRootFilesystem": true
     }
 ]
