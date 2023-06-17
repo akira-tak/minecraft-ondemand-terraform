@@ -23,19 +23,30 @@ variable "server_name" {
 }
 
 variable "cpu" {
-  type = number
+  type    = number
   default = 1024
 }
 variable "memory" {
-  type = number
+  type    = number
   default = 4096
 }
 
 variable "startup_min" {
-  type = number
+  type    = number
   default = 10
 }
 variable "shutdown_min" {
-  type = number
+  type    = number
   default = 20
+}
+
+variable "gamemode" {
+  type    = string
+  default = "survival"
+
+}
+
+variable "difficulty" {
+  type    = string
+  default = "normal"
 }

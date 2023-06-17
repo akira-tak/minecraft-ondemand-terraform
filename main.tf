@@ -148,6 +148,8 @@ resource "aws_ecs_task_definition" "minecraft_server" {
     {
       cluster_name = "minecraft-cluster",
       service_name = "minecraft-server",
+      gamemode     = var.gamemode,
+      difficulty   = var.difficulty,
       dns_zone     = var.dns_zone,
       server_name  = var.server_name,
       shutdown_min = var.shutdown_min,
