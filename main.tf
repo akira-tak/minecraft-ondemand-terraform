@@ -170,7 +170,6 @@ resource "aws_ecs_task_definition" "minecraft_server" {
 
     efs_volume_configuration {
       file_system_id     = aws_efs_file_system.this.id
-      root_directory     = "/minecraft"
       transit_encryption = "ENABLED"
 
       authorization_config {
